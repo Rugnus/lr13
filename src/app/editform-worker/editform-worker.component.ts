@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MyWorkerType, MyWorker } from '../shared/worker.model';
+import { MyWorkerType, MyWorker, myWorkerDatabase } from '../shared/worker.model';
 
 @Component({
   selector: 'app-editform-worker',
@@ -15,20 +15,22 @@ export class EditformWorkerComponent implements OnInit {
   myWorkerType = MyWorkerType;
 
   @Output() editWorker = new EventEmitter<MyWorker>();
+  @Output() editById = new EventEmitter<number>();
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onEditWorker() {
+  onEditWorker(id: number) {
     let worker: MyWorker = {
-      id: this.id,
+      id: id,
       name: this.name,
       surname: this.surname,
       type: this.type
     }
-    this.editWorker.emit(worker)
+    this.editWorker.emit(worker);
   }
 
 }

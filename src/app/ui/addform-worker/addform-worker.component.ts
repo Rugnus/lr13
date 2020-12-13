@@ -22,12 +22,18 @@ export class AddformWorkerComponent implements OnInit {
   }
 
   onAddWorker() {
-    let worker: MyWorker = {
-      name: this.name,
-      surname: this.surname,
-      type: this.type
+    console.log(this.name)
+    if (this.name === undefined || this.surname === undefined) {
+      alert("Введите значения!");
+    }else {
+      let worker: MyWorker = {
+        name: this.name,
+        surname: this.surname,
+        type: this.type
+      }
+      this.addWorker.emit(worker);
     }
-    this.addWorker.emit(worker);
+    
   }
 
 }

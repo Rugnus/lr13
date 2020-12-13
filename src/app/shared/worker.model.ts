@@ -14,9 +14,9 @@ export enum MyWorkerType {
 }
 
 export let myWorkerDatabase: MyWorker[] = [
-    {id: 1, name: 'Ivan', surname: 'Ivanov', type: 0},
-    {id: 2, name: 'Sungur', surname: 'Gasanov', type: 1},
-    {id: 3, name: 'Daniil', surname: 'Alexseev', type: 2},
-    {id: 4, name: 'Rufina', surname: 'Gat', type: 3}
+    {id: 0, name: 'Ivan', surname: 'Ivanov', type: 0},
+    {id: 1, name: 'Sungur', surname: 'Gasanov', type: 1},
+    {id: 2, name: 'Daniil', surname: 'Alexseev', type: 2},
+    {id: 3, name: 'Rufina', surname: 'Gat', type: 3}
 
 ]

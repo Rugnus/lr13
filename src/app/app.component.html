@@ -19,6 +19,7 @@
   [workers]="getByType(myWorkerType.copywriter)" 
   (deleteWorker)="onDeleteWorker($event)"
   [title]="'Рекламщики'"
+  
   ></app-table-workers>
   <app-table-workers 
   [workers]="getByType(myWorkerType.manager)" 
@@ -26,5 +27,6 @@
   [title]="'Менеджеры'"
   ></app-table-workers>
   
-  <app-editform-worker (editWorker)="onEditWorker($event)"></app-editform-worker>
+  <app-editform-worker (editWorker)="onEditWorker($event)" ></app-editform-worker>
 </div>
+

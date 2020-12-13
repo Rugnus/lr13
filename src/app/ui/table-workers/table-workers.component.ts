@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MyWorker } from 'src/app/shared/worker.model';
+import { MyWorker, MyWorkerType } from 'src/app/shared/worker.model';
 
 @Component({
   selector: 'app-table-workers',
@@ -12,6 +12,15 @@ export class TableWorkersComponent implements OnInit {
   @Input() workers: MyWorker[] = [];
   @Output() deleteWorker = new EventEmitter<number>();
 
+  id: number;
+  name: string;
+  surname: string;
+  type = 0;
+  myWorkerType = MyWorkerType;
+
+  @Output() editWorker = new EventEmitter<MyWorker>();
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +29,6 @@ export class TableWorkersComponent implements OnInit {
   onDeleteWorker(id: number) {
     this.deleteWorker.emit(id);
   }
+
 
 }
