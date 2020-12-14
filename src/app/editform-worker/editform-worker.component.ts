@@ -49,6 +49,7 @@ export class EditformWorkerComponent implements OnInit {
     })
 
   }
+ 
 
   onEditWorker() {
     let worker: MyWorker = {
