@@ -37,9 +37,6 @@ export class AppComponent {
   }
 
    onEditWorker(worker: MyWorker, ) {
-    // let index = this.workers.findIndex((worker) => worker.id === worker.id);
-    // console.log(index);
-    
     for (let i = 0; i < this.workers.length; i++) {
       console.log(this.workers[i].id);
       console.log('Worker: ' + worker.id);
@@ -47,12 +44,9 @@ export class AppComponent {
       if (this.workers[i].id == worker.id) {
         console.log("Massiv: " + this.workers[i].id)
 
-        this.workers.splice(this.workers[i].id, 1);
-        this.workers.push(worker);
+        this.workers.splice(this.workers[i].id, 1, worker);
         break;
       }
     }
-
   }
-
 }

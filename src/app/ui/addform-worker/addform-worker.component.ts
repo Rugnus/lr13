@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MyWorkerType, MyWorker } from 'src/app/shared/worker.model';
 
 @Component({
@@ -8,10 +9,9 @@ import { MyWorkerType, MyWorker } from 'src/app/shared/worker.model';
 })
 export class AddformWorkerComponent implements OnInit {
 
+  personForm: FormGroup;
+  disabledForms = false;
 
-  name: string;
-  surname: string;
-  type = 0;
   myWorkerType = MyWorkerType;
 
   @Output() addWorker = new EventEmitter<MyWorker>();
@@ -19,21 +19,40 @@ export class AddformWorkerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    this.personForm = new FormGroup({
+      firstName: new FormControl({value: '', disabled: this.disabledForms}, [
+        Validators.required,
+      ]),
+      surname: new FormControl({value: '', disabled: this.disabledForms}, [
+        Validators.required,
+      ]),
+      type: new FormControl({value: 0, disabled: this.disabledForms}, [
+        Validators.required,
+      ]),
+      phone: new FormControl({ value: '', disabled: this.disabledForms }, [
+        Validators.required,
+        Validators.pattern("[0-9]{10}")
+      ]),
+    })
+
+    console.log(this.personForm.value);
+  
+
   }
 
   onAddWorker() {
-    console.log(this.name)
-    if (this.name === undefined || this.surname === undefined) {
+    if (this.personForm.controls["firstName"] === undefined || this.personForm.controls["surname"] === undefined) {
       alert("Введите значения!");
     }else {
       let worker: MyWorker = {
-        name: this.name,
-        surname: this.surname,
-        type: this.type
+        name: this.personForm.controls["firstName"].value,
+        surname: this.personForm.controls["surname"].value,
+        type: this.personForm.controls["type"].value,
+        phone: this.personForm.controls["phone"].value
       }
       this.addWorker.emit(worker);
     }
-    
   }
 
 }
